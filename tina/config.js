@@ -159,6 +159,115 @@ const schema = defineSchema({
         },
       ],
     },
+    {
+      format: "json",
+      name: "news_2",
+      label: "News 2",
+      path: "content",
+      match: {
+        include: "news2",
+      },
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      fields: [
+        {
+          type: "object",
+          name: "en",
+          label: "English",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.date} — ${item?.title}` }
+            },
+          },
+          fields: [
+            {
+              type: "datetime",
+              name: "date",
+              label: "Date",
+              required: true,
+              ui: {
+                dateFormat: "YYYY-MM-DD",
+                parse: (value) => value && value.format("YYYY-MM-DD"),
+              },
+            },
+            {
+              type: "string",
+              name: "title",
+              label: "Title",
+              isTitle: true,
+              required: true,
+            },
+            {
+              type: "string",
+              name: "summary",
+              label: "Summary",
+              required: true,
+              ui: {
+                "component": "textarea",
+              },
+            },
+            {
+              type: "rich-text",
+              name: "body",
+              label: "Body",
+              isBody: true,
+              required: true,
+            },
+          ],
+        },
+        {
+          type: "object",
+          name: "fr",
+          label: "French",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.date} — ${item?.title}` }
+            },
+          },
+          fields: [
+            {
+              type: "datetime",
+              name: "date",
+              label: "Date",
+              required: true,
+              ui: {
+                dateFormat: "YYYY-MM-DD",
+                parse: (value) => value && value.format("YYYY-MM-DD"),
+              },
+            },
+            {
+              type: "string",
+              name: "title",
+              label: "Title",
+              isTitle: true,
+              required: true,
+            },
+            {
+              type: "string",
+              name: "summary",
+              label: "Summary",
+              required: true,
+              ui: {
+                "component": "textarea",
+              },
+            },
+            {
+              type: "rich-text",
+              name: "body",
+              label: "Body",
+              isBody: true,
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
   ],
 });
 
