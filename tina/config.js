@@ -268,6 +268,107 @@ const schema = defineSchema({
         },
       ],
     },
+    {
+      format: "json",
+      name: "news_3",
+      label: "News 3",
+      path: "content",
+      match: {
+        include: "news3",
+      },
+      ui: {
+        allowedActions: {
+          create: false,
+          delete: false,
+        },
+      },
+      fields: [
+        {
+          type: "object",
+          name: "en",
+          label: "English",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.date} — ${item?.title}` }
+            },
+          },
+          fields: [
+            {
+              type: "datetime",
+              name: "date",
+              label: "Date",
+              required: true,
+              ui: {
+                dateFormat: "YYYY-MM-DD",
+                parse: (value) => value && value.format("YYYY-MM-DD"),
+              },
+            },
+            {
+              type: "string",
+              name: "title",
+              label: "Title",
+              isTitle: true,
+              required: true,
+            },
+            {
+              type: "image",
+              name: "image",
+              label: "Image",
+            },
+            {
+              type: "rich-text",
+              name: "body",
+              label: "Body",
+              isBody: true,
+              required: true,
+            },
+          ],
+        },
+        {
+          type: "object",
+          name: "fr",
+          label: "French",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: `${item?.date} — ${item?.title}` }
+            },
+          },
+          fields: [
+            {
+              type: "datetime",
+              name: "date",
+              label: "Date",
+              required: true,
+              ui: {
+                dateFormat: "YYYY-MM-DD",
+                parse: (value) => value && value.format("YYYY-MM-DD"),
+              },
+            },
+            {
+              type: "string",
+              name: "title",
+              label: "Title",
+              isTitle: true,
+              required: true,
+            },
+            {
+              type: "image",
+              name: "image",
+              label: "Image",
+            },
+            {
+              type: "rich-text",
+              name: "body",
+              label: "Body",
+              isBody: true,
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
   ],
 });
 
