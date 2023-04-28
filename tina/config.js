@@ -27,7 +27,10 @@ const schema = defineSchema({
     {
       label: "Blog Posts",
       name: "post",
-      path: "content/post",
+      path: "content",
+      match: {
+        include: "post/*",
+      },
       fields: [
         {
           type: "string",
